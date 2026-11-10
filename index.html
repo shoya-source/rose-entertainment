@@ -329,6 +329,11 @@ a.artist{display:block;color:inherit}
 }
 .model-promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .model-promo .ph-init{font-family:var(--f-display);font-style:italic;font-size:5rem;color:rgba(183,110,121,.4)}
+.mo-slider{position:absolute;inset:0;overflow:hidden;z-index:2}
+.mo-slider[hidden]{display:none}
+.mo-slider .hero-slides{height:100%}
+.mo-slider .hero-slide{padding:0;background:none}
+.mo-slider .hero-nav{opacity:1}
 /* プロフィール（写真の下・中央寄せ） */
 .model-head{text-align:center}
 .model-head .eyebrow{margin-bottom:.4rem}
@@ -767,65 +772,33 @@ a.artist{display:block;color:inherit}
     <section class="section model-single">
       <div class="wrap">
         <p class="mo-demo-note">（プレビュー）タレント詳細ページのイメージ ― 本番では1人ずつ専用URLのページになります</p>
-        <figure class="model-promo"><img id="moPhoto" alt="" style="display:none"><span class="ph-init" id="moInit">T</span></figure>
+        <figure class="model-promo">
+          <div class="mo-slider" id="moSlider" hidden>
+            <div class="hero-slides" id="moSlides"></div>
+            <button type="button" class="hero-nav prev" id="moPrev" aria-label="前の写真">&larr;</button>
+            <button type="button" class="hero-nav next" id="moNext" aria-label="次の写真">&rarr;</button>
+            <div class="hero-dots" id="moDots"></div>
+          </div>
+          <span class="ph-init" id="moInit">T</span>
+        </figure>
         <div class="model-head">
           <p class="eyebrow" id="moRole">Model</p>
           <h1 class="model-name"><span id="moName">田村 愛美鈴</span><span class="model-name-en" id="moEn">Tamura Amiri</span></h1>
           <div class="gilt-rule"></div>
         </div>
-        <dl class="model-specs">
-              <div><dt>出身地</dt><dd>東京都</dd></div>
-              <div><dt>生年月日</dt><dd>2002年1月1日</dd></div>
-              <div><dt>身長</dt><dd>160cm</dd></div>
-              <div><dt>サイズ</dt><dd>B82 W58 H84</dd></div>
-              <div><dt>靴のサイズ</dt><dd>23.5cm</dd></div>
-            </dl>
-            <div class="social">
-              <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.9.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.22 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.21 8.78 2.2 12 2.2Zm0 1.98c-3.15 0-3.52.01-4.76.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.12.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.12.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.12-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.2-1.39-.32-1.71a2.86 2.86 0 0 0-.69-1.06 2.86 2.86 0 0 0-1.06-.69c-.32-.12-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07Zm0 3.37a4.45 4.45 0 1 1 0 8.9 4.45 4.45 0 0 1 0-8.9Zm0 1.98a2.47 2.47 0 1 0 0 4.94 2.47 2.47 0 0 0 0-4.94Zm5.66-2.2a1.04 1.04 0 1 1-2.08 0 1.04 1.04 0 0 1 2.08 0Z"/></svg></a>
-              <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg></a>
-              <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.3v12.9a2.59 2.59 0 1 1-2.6-2.6c.27 0 .53.04.78.12V7.9a5.9 5.9 0 0 0-.78-.05 5.9 5.9 0 1 0 5.9 5.9V9.01a7.55 7.55 0 0 0 4.4 1.41V7.12a4.28 4.28 0 0 1-3.34-1.3Z"/></svg></a>
-              <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a>
-        </div>
-        <section class="model-history">
+        <p class="history-empty" id="moComingSoon" style="display:none">プロフィール・出演履歴は準備中です。</p>
+        <dl class="model-specs" id="moSpecs"></dl>
+            <div class="social" id="moSocial">
+              <a id="moSnsTiktok" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.3v12.9a2.59 2.59 0 1 1-2.6-2.6c.27 0 .53.04.78.12V7.9a5.9 5.9 0 0 0-.78-.05 5.9 5.9 0 1 0 5.9 5.9V9.01a7.55 7.55 0 0 0 4.4 1.41V7.12a4.28 4.28 0 0 1-3.34-1.3Z"/></svg></a>
+              <a id="moSnsInstagram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.9.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.22 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.21 8.78 2.2 12 2.2Zm0 1.98c-3.15 0-3.52.01-4.76.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.12.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.12.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.12-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.2-1.39-.32-1.71a2.86 2.86 0 0 0-.69-1.06 2.86 2.86 0 0 0-1.06-.69c-.32-.12-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07Zm0 3.37a4.45 4.45 0 1 1 0 8.9 4.45 4.45 0 0 1 0-8.9Zm0 1.98a2.47 2.47 0 1 0 0 4.94 2.47 2.47 0 0 0 0-4.94Zm5.66-2.2a1.04 1.04 0 1 1-2.08 0 1.04 1.04 0 0 1 2.08 0Z"/></svg></a>
+              <a id="moSnsYoutube" href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a>
+              <a id="moSnsX" href="#" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg></a>
+            </div>
+        <section class="model-history" id="moHistory">
           <p class="eyebrow history-eyebrow">History</p>
           <h2 class="history-title">出演履歴</h2>
-          <div class="history-tabs" role="tablist" aria-label="出演履歴カテゴリー">
-            <button type="button" class="history-tab is-active" data-cat="magazine">雑誌</button>
-            <button type="button" class="history-tab" data-cat="tv">TV</button>
-            <button type="button" class="history-tab" data-cat="web">WEB</button>
-            <button type="button" class="history-tab" data-cat="event">イベント</button>
-            <button type="button" class="history-tab" data-cat="other">その他</button>
-          </div>
-          <div class="history-panels">
-            <div class="history-panel is-active" data-cat="magazine">
-              <ul class="history-list">
-                <li><span class="h-date">2025.06</span><span class="h-text">ファッション誌「BLOOM」グラビア掲載</span></li>
-                <li><span class="h-date">2025.02</span><span class="h-text">「Rose Magazine」表紙</span></li>
-                <li><span class="h-date">2024.09</span><span class="h-text">ビューティー誌 特集ページ</span></li>
-              </ul>
-            </div>
-            <div class="history-panel" data-cat="tv">
-              <ul class="history-list">
-                <li><span class="h-date">2025.04</span><span class="h-text">バラエティ番組「○○」出演</span></li>
-                <li><span class="h-date">2024.11</span><span class="h-text">情報番組 ゲスト出演</span></li>
-              </ul>
-            </div>
-            <div class="history-panel" data-cat="web">
-              <ul class="history-list">
-                <li><span class="h-date">2025.05</span><span class="h-text">Webメディア「ROSE WEB」インタビュー</span></li>
-                <li><span class="h-date">2025.01</span><span class="h-text">ブランド公式サイト モデル起用</span></li>
-              </ul>
-            </div>
-            <div class="history-panel" data-cat="event">
-              <ul class="history-list">
-                <li><span class="h-date">2025.07</span><span class="h-text">「Rosé Night Live Vol.4」出演</span></li>
-                <li><span class="h-date">2025.03</span><span class="h-text">ファンミーティング 開催</span></li>
-              </ul>
-            </div>
-            <div class="history-panel" data-cat="other">
-              <p class="history-empty">現在、こちらの出演履歴はありません。</p>
-            </div>
-          </div>
+          <div class="history-tabs" id="moHistoryTabs" role="tablist" aria-label="出演履歴カテゴリー"></div>
+          <div class="history-panels" id="moHistoryPanels"></div>
         </section>
       </div>
     </section>
@@ -854,11 +827,11 @@ a.artist{display:block;color:inherit}
           <li><a href="#entry">応募・お問い合わせ</a></li>
         </ul>
         <div class="social">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.9.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.22 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.21 8.78 2.2 12 2.2Zm0 1.98c-3.15 0-3.52.01-4.76.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.12.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.12.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.12-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.2-1.39-.32-1.71a2.86 2.86 0 0 0-.69-1.06 2.86 2.86 0 0 0-1.06-.69c-.32-.12-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07Zm0 3.37a4.45 4.45 0 1 1 0 8.9 4.45 4.45 0 0 1 0-8.9Zm0 1.98a2.47 2.47 0 1 0 0 4.94 2.47 2.47 0 0 0 0-4.94Zm5.66-2.2a1.04 1.04 0 1 1-2.08 0 1.04 1.04 0 0 1 2.08 0Z"/></svg></a>
-          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.3v12.9a2.59 2.59 0 1 1-2.6-2.6c.27 0 .53.04.78.12V7.9a5.9 5.9 0 0 0-.78-.05 5.9 5.9 0 1 0 5.9 5.9V9.01a7.55 7.55 0 0 0 4.4 1.41V7.12a4.28 4.28 0 0 1-3.34-1.3Z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a>
-        </div>
+              <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.3v12.9a2.59 2.59 0 1 1-2.6-2.6c.27 0 .53.04.78.12V7.9a5.9 5.9 0 0 0-.78-.05 5.9 5.9 0 1 0 5.9 5.9V9.01a7.55 7.55 0 0 0 4.4 1.41V7.12a4.28 4.28 0 0 1-3.34-1.3Z"/></svg></a>
+              <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.9.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.6 2.2 15.22 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.21 8.78 2.2 12 2.2Zm0 1.98c-3.15 0-3.52.01-4.76.07-.9.04-1.39.2-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.12.32-.28.81-.32 1.71-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.2 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.12.81.28 1.71.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.39-.2 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.12-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.2-1.39-.32-1.71a2.86 2.86 0 0 0-.69-1.06 2.86 2.86 0 0 0-1.06-.69c-.32-.12-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.76-.07Zm0 3.37a4.45 4.45 0 1 1 0 8.9 4.45 4.45 0 0 1 0-8.9Zm0 1.98a2.47 2.47 0 1 0 0 4.94 2.47 2.47 0 0 0 0-4.94Zm5.66-2.2a1.04 1.04 0 1 1-2.08 0 1.04 1.04 0 0 1 2.08 0Z"/></svg></a>
+              <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></a>
+              <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg></a>
+            </div>
       </div>
     </div>
     <div class="foot-bottom">
@@ -948,33 +921,163 @@ a.artist{display:block;color:inherit}
     });
   }
 
-  var hTabs=document.querySelectorAll('.history-tab');
-  if(hTabs.length){
-    hTabs.forEach(function(tab){
-      tab.addEventListener('click',function(){
-        var cat=tab.getAttribute('data-cat');
-        document.querySelectorAll('.history-tab').forEach(function(t){var on=(t===tab);t.classList.toggle('is-active',on);t.setAttribute('aria-selected',on);});
-        document.querySelectorAll('.history-panel').forEach(function(pn){pn.classList.toggle('is-active',pn.getAttribute('data-cat')===cat);});
-      });
-    });
-  }
-
   var overlay=document.getElementById('modelOverlay');
   if(overlay){
     var mCards=document.querySelectorAll('a.artist[data-name], a.mc-slide[data-name]');
     var setT=function(id,v){var el=document.getElementById(id); if(el)el.textContent=v;};
+    var MODEL_DATA={
+      "田村 愛美鈴":{
+        sns:{
+          tiktok:"https://www.tiktok.com/@amiri_tamura",
+          instagram:"https://www.instagram.com/amiri_tamura/?hl=ja",
+          youtube:"https://www.youtube.com/@Amiri_Tamura",
+          x:"https://x.com/Amiri_Tamura"
+        },
+        specs:[
+          ["出身地","埼玉県"],
+          ["生年月日","2000年7月5日"],
+          ["身長","156cm"],
+          ["サイズ","B78 / W56 / H82"],
+          ["靴のサイズ","23cm"]
+        ],
+        history:[
+          {cat:"広告",items:[
+            ["2024.02.05","JR東日本「キュン❤︎パス」"]
+          ]},
+          {cat:"WEB",items:[
+            ["2023.03.12","日本テレビ「毎日はにかむ僕たちは。」メインキャスト"]
+          ]},
+          {cat:"映画",items:[
+            ["2023.10.16","「碧恋のトウループ」東志ハル 役"]
+          ]},
+          {cat:"舞台",items:[
+            ["2022.11.29–12.04","TUFF STUFF「放課後戦記2022」＠シアターミクサ　菊救丘援美 役"],
+            ["2023.03.28–31","E-Stage Topia「ヨツバリベンジ」＠渋谷区文化総合センター大和田・伝承ホール　雪黄金エーデルワイス 役"]
+          ]},
+          {cat:"雑誌 / モデル",items:[
+            ["2024.06.24","集英社「週刊プレイボーイ」No.29"],
+            ["2024.03.21","集英社「週刊ヤングジャンプ」No.16 特大号"],
+            ["2022.08.24","東京ニュース通信社「B.L.T.」（2022年10月号）"]
+          ]},
+          {cat:"デジタル写真集",items:[
+            ["2024.03.21","集英社 ヤングジャンプ「はじまりの音撮影」（撮影：細居幸次郎 氏）"],
+            ["2024.06.24","集英社 週プレ「ビター＆キュート＆・・・？」（撮影：Takeo Dec. 氏）"],
+            ["2024.12.13","らんくう 水色エモーション「恋のはじまり」"],
+            ["2025.02.26","白夜書房 BRODY「Amiri in motion」（撮影：篠田直人 氏）"],
+            ["2026.03.10","光文社 FLASH「君が奏でたLOVE SONG」（撮影：オノデラカズオ 氏）"],
+            ["2026.03.10","光文社 FLASH「君に捧げるLOVE SONG」（撮影：オノデラカズオ 氏）"]
+          ]}
+        ]
+      }
+    };
+    var moEsc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
+    var moAuto=null;
+    var clearMoAuto=function(){ if(moAuto){window.clearInterval(moAuto); moAuto=null;} };
+    var buildSlider=function(c){
+      var wrap=document.getElementById('moSlider'),
+          slidesEl=document.getElementById('moSlides'),
+          dotsEl=document.getElementById('moDots'),
+          ini=document.getElementById('moInit'),
+          prev=document.getElementById('moPrev'),
+          next=document.getElementById('moNext');
+      clearMoAuto();
+      if(!wrap||!slidesEl){return;}
+      var photos=[];
+      var thumb=c.querySelector('img');
+      if(thumb&&thumb.getAttribute('src')){photos.push(thumb.getAttribute('src'));}
+      var dp=c.getAttribute('data-photo')||'';
+      if(dp&&photos.indexOf(dp)===-1){photos.push(dp);}
+      if(!photos.length){
+        wrap.hidden=true; if(ini){ini.style.display='';} slidesEl.innerHTML=''; if(dotsEl){dotsEl.innerHTML='';} return;
+      }
+      wrap.hidden=false; if(ini){ini.style.display='none';}
+      slidesEl.innerHTML=photos.map(function(src){return '<div class="hero-slide"><img src="'+src+'" alt=""></div>';}).join('');
+      slidesEl.style.transition='none'; slidesEl.style.transform='translateX(0)';
+      void slidesEl.offsetWidth; slidesEl.style.transition='';
+      var n=photos.length, cur=0, dots=[];
+      if(dotsEl){
+        dotsEl.innerHTML='';
+        for(var i=0;i<n;i++){
+          (function(idx){
+            var b=document.createElement('button'); b.type='button';
+            b.className='hero-dot'+(idx===0?' is-active':''); b.setAttribute('aria-label',(idx+1)+'枚目');
+            b.addEventListener('click',function(){go(idx);restart();});
+            dotsEl.appendChild(b); dots.push(b);
+          })(i);
+        }
+      }
+      function go(idx){cur=(idx+n)%n; slidesEl.style.transform='translateX('+(-cur*100)+'%)'; for(var d=0;d<n;d++){if(dots[d]){dots[d].classList.toggle('is-active',d===cur);}}}
+      function nx(){go(cur+1);} function pv(){go(cur-1);}
+      var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function start(){ if(!reduce&&n>1){moAuto=window.setInterval(nx,4000);} }
+      function restart(){clearMoAuto();start();}
+      if(prev){prev.onclick=function(){pv();restart();};}
+      if(next){next.onclick=function(){nx();restart();};}
+      wrap.onmouseenter=function(){clearMoAuto();};
+      wrap.onmouseleave=function(){start();};
+      var sx=null;
+      wrap.ontouchstart=function(e){sx=e.touches[0].clientX;};
+      wrap.ontouchend=function(e){ if(sx===null){return;} var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40){ if(dx<0){nx();}else{pv();} restart(); } sx=null; };
+      start();
+    };
+    var buildProfile=function(c){
+      buildSlider(c);
+      var d=MODEL_DATA[c.getAttribute('data-name')||''];
+      var specsEl=document.getElementById('moSpecs'),
+          histEl=document.getElementById('moHistory'),
+          tabsEl=document.getElementById('moHistoryTabs'),
+          panelsEl=document.getElementById('moHistoryPanels'),
+          comingEl=document.getElementById('moComingSoon'),
+          socialEl=document.getElementById('moSocial');
+      if(!d){
+        if(specsEl)specsEl.style.display='none';
+        if(histEl)histEl.style.display='none';
+        if(socialEl)socialEl.style.display='none';
+        if(comingEl)comingEl.style.display='';
+        return;
+      }
+      if(comingEl)comingEl.style.display='none';
+      if(socialEl){
+        var sns=d.sns||{};
+        var snsMap=[['moSnsTiktok',sns.tiktok],['moSnsInstagram',sns.instagram],['moSnsYoutube',sns.youtube],['moSnsX',sns.x]];
+        var snsAny=false;
+        snsMap.forEach(function(m){
+          var a=document.getElementById(m[0]); if(!a)return;
+          if(m[1]){a.href=m[1]; a.style.display=''; snsAny=true;} else {a.style.display='none';}
+        });
+        socialEl.style.display=snsAny?'':'none';
+      }
+      if(specsEl){
+        specsEl.style.display='';
+        specsEl.innerHTML=d.specs.map(function(r){return '<div><dt>'+moEsc(r[0])+'</dt><dd>'+moEsc(r[1])+'</dd></div>';}).join('');
+      }
+      if(histEl&&tabsEl&&panelsEl){
+        histEl.style.display='';
+        tabsEl.innerHTML=d.history.map(function(h,i){return '<button type="button" class="history-tab'+(i===0?' is-active':'')+'" data-cat="'+moEsc(h.cat)+'" role="tab" aria-selected="'+(i===0?'true':'false')+'">'+moEsc(h.cat)+'</button>';}).join('');
+        panelsEl.innerHTML=d.history.map(function(h,i){
+          var lis=h.items.map(function(it){return '<li><span class="h-date">'+moEsc(it[0])+'</span><span class="h-text">'+moEsc(it[1])+'</span></li>';}).join('');
+          return '<div class="history-panel'+(i===0?' is-active':'')+'" data-cat="'+moEsc(h.cat)+'"><ul class="history-list">'+lis+'</ul></div>';
+        }).join('');
+        var tabs=tabsEl.querySelectorAll('.history-tab');
+        tabs.forEach(function(tab){
+          tab.addEventListener('click',function(){
+            var cat=tab.getAttribute('data-cat');
+            tabs.forEach(function(t){var on=(t===tab);t.classList.toggle('is-active',on);t.setAttribute('aria-selected',on);});
+            panelsEl.querySelectorAll('.history-panel').forEach(function(pn){pn.classList.toggle('is-active',pn.getAttribute('data-cat')===cat);});
+          });
+        });
+      }
+    };
     var openModel=function(c){
-      var moImg=document.getElementById('moPhoto'), moIni=document.getElementById('moInit');
-      var photo=c.getAttribute('data-photo')||'';
-      if(moImg&&moIni){ if(photo){moImg.src=photo;moImg.style.display='';moIni.style.display='none';} else {moImg.removeAttribute('src');moImg.style.display='none';moIni.style.display='';} }
       setT('moInit',c.getAttribute('data-init')||'');
       setT('moName',c.getAttribute('data-name')||'');
       setT('moName2',c.getAttribute('data-name')||'');
       setT('moRole',c.getAttribute('data-role')||'');
       setT('moEn',c.getAttribute('data-en')||'');
+      buildProfile(c);
       overlay.hidden=false; overlay.scrollTop=0; document.body.style.overflow='hidden';
     };
-    var closeModel=function(){overlay.hidden=true; document.body.style.overflow='';};
+    var closeModel=function(){clearMoAuto(); overlay.hidden=true; document.body.style.overflow='';};
     mCards.forEach(function(c){c.addEventListener('click',function(e){e.preventDefault();openModel(c);});});
     var mc=document.getElementById('modelClose'); if(mc)mc.addEventListener('click',closeModel);
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.hidden)closeModel();});
