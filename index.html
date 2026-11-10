@@ -965,6 +965,20 @@ a.artist{display:block;color:inherit}
             ["2026.03.10","光文社 FLASH「君に捧げるLOVE SONG」（撮影：オノデラカズオ 氏）"]
           ]}
         ]
+      },
+      "西條 愛梨":{
+        sns:{
+          tiktok:"https://www.tiktok.com/@nisi._.rin",
+          instagram:"https://www.instagram.com/airi_saizyou/",
+          x:"https://x.com/airi__vega"
+        },
+        specs:[
+          ["出身地","北海道"],
+          ["生年月日","2006年11月28日"],
+          ["身長","158cm"],
+          ["サイズ","B83 / W65 / H90"],
+          ["靴のサイズ","24cm"]
+        ]
       }
     };
     var moEsc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
@@ -1049,6 +1063,7 @@ a.artist{display:block;color:inherit}
         specsEl.innerHTML=d.specs.map(function(r){return '<div><dt>'+moEsc(r[0])+'</dt><dd>'+moEsc(r[1])+'</dd></div>';}).join('');
       }
       if(histEl&&tabsEl&&panelsEl){
+        if(d.history&&d.history.length){
         histEl.style.display='';
         tabsEl.innerHTML=d.history.map(function(h,i){return '<button type="button" class="history-tab'+(i===0?' is-active':'')+'" data-cat="'+moEsc(h.cat)+'" role="tab" aria-selected="'+(i===0?'true':'false')+'">'+moEsc(h.cat)+'</button>';}).join('');
         panelsEl.innerHTML=d.history.map(function(h,i){
@@ -1063,6 +1078,7 @@ a.artist{display:block;color:inherit}
             panelsEl.querySelectorAll('.history-panel').forEach(function(pn){pn.classList.toggle('is-active',pn.getAttribute('data-cat')===cat);});
           });
         });
+        } else { histEl.style.display='none'; }
       }
     };
     var openModel=function(c){
