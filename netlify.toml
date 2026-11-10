@@ -1,0 +1,38 @@
+# ============================================================
+#  Rosé Entertainment — Netlify 設定ファイル
+#  このファイルがあると、GitHub 連携で自動公開するときに
+#  公開設定が自動で読み込まれます（ドラッグ&ドロップ公開でもそのまま使えます）
+# ============================================================
+
+[build]
+  # ビルド処理は不要（HTML 1枚の静的サイト）。このフォルダ直下をそのまま公開します。
+  publish = "."
+  command = ""
+
+# ------------------------------------------------------------
+#  セキュリティ・表示まわりのヘッダー
+# ------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# ------------------------------------------------------------
+#  画像など静的ファイルのキャッシュ（表示を速くします）
+# ------------------------------------------------------------
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
