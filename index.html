@@ -672,7 +672,7 @@ a.artist{display:block;color:inherit}
       <h2 class="sec-head">所属モデル</h2>
       <div class="model-carousel">
         <button type="button" class="mc-arrow prev" aria-label="前のモデル">&larr;</button>
-        <div class="mc-track" id="modelTrack"><a class="mc-slide" href="#" data-init="T" data-name="田村 愛美鈴" data-en="Tamura Amiri" data-role="Model"><div class="mc-card"><div class="mc-photo"><span class="ph-init">T</span></div><div class="mc-meta"><p class="mc-role">Model</p><h3 class="mc-name">田村 愛美鈴</h3><span class="mc-more">詳細を見る &rarr;</span></div></div></a><a class="mc-slide" href="#" data-init="S" data-name="西條 愛梨" data-en="Saijo Airi" data-role="Model"><div class="mc-card"><div class="mc-photo"><span class="ph-init">S</span></div><div class="mc-meta"><p class="mc-role">Model</p><h3 class="mc-name">西條 愛梨</h3><span class="mc-more">詳細を見る &rarr;</span></div></div></a>
+        <div class="mc-track" id="modelTrack"><a class="mc-slide" href="#" data-init="T" data-name="田村 愛美鈴" data-en="Tamura Amiri" data-role="Model" data-photo="tamura-amiri-full.jpg"><div class="mc-card"><div class="mc-photo"><img src="tamura-amiri-bust.jpg" alt="田村 愛美鈴"></div><div class="mc-meta"><p class="mc-role">Model</p><h3 class="mc-name">田村 愛美鈴</h3><span class="mc-more">詳細を見る &rarr;</span></div></div></a><a class="mc-slide" href="#" data-init="S" data-name="西條 愛梨" data-en="Saijo Airi" data-role="Model"><div class="mc-card"><div class="mc-photo"><span class="ph-init">S</span></div><div class="mc-meta"><p class="mc-role">Model</p><h3 class="mc-name">西條 愛梨</h3><span class="mc-more">詳細を見る &rarr;</span></div></div></a>
         </div>
         <button type="button" class="mc-arrow next" aria-label="次のモデル">&rarr;</button>
         <div class="mc-dots" id="modelDots"></div>
@@ -682,7 +682,7 @@ a.artist{display:block;color:inherit}
         <a class="btn btn-ghost" href="#" id="talentListBtn">タレント一覧</a>
       </div>
 
-      <div class="artist-grid" id="talentListGrid" hidden style="margin-top:clamp(30px,4vw,48px)"><a class="artist" href="#" data-init="T" data-name="田村 愛美鈴" data-en="Tamura Amiri" data-role="Model"><div class="ph">T</div><figcaption><p class="nm">田村 愛美鈴</p><p class="rl">Model</p></figcaption></a><a class="artist" href="#" data-init="S" data-name="西條 愛梨" data-en="Saijo Airi" data-role="Model"><div class="ph">S</div><figcaption><p class="nm">西條 愛梨</p><p class="rl">Model</p></figcaption></a>
+      <div class="artist-grid" id="talentListGrid" hidden style="margin-top:clamp(30px,4vw,48px)"><a class="artist" href="#" data-init="T" data-name="田村 愛美鈴" data-en="Tamura Amiri" data-role="Model" data-photo="tamura-amiri-full.jpg"><div class="ph"><img src="tamura-amiri-bust.jpg" alt="田村 愛美鈴"></div><figcaption><p class="nm">田村 愛美鈴</p><p class="rl">Model</p></figcaption></a><a class="artist" href="#" data-init="S" data-name="西條 愛梨" data-en="Saijo Airi" data-role="Model"><div class="ph">S</div><figcaption><p class="nm">西條 愛梨</p><p class="rl">Model</p></figcaption></a>
       </div>
     </div>
   </section>
@@ -767,7 +767,7 @@ a.artist{display:block;color:inherit}
     <section class="section model-single">
       <div class="wrap">
         <p class="mo-demo-note">（プレビュー）タレント詳細ページのイメージ ― 本番では1人ずつ専用URLのページになります</p>
-        <figure class="model-promo"><span class="ph-init" id="moInit">T</span></figure>
+        <figure class="model-promo"><img id="moPhoto" alt="" style="display:none"><span class="ph-init" id="moInit">T</span></figure>
         <div class="model-head">
           <p class="eyebrow" id="moRole">Model</p>
           <h1 class="model-name"><span id="moName">田村 愛美鈴</span><span class="model-name-en" id="moEn">Tamura Amiri</span></h1>
@@ -964,6 +964,9 @@ a.artist{display:block;color:inherit}
     var mCards=document.querySelectorAll('a.artist[data-name], a.mc-slide[data-name]');
     var setT=function(id,v){var el=document.getElementById(id); if(el)el.textContent=v;};
     var openModel=function(c){
+      var moImg=document.getElementById('moPhoto'), moIni=document.getElementById('moInit');
+      var photo=c.getAttribute('data-photo')||'';
+      if(moImg&&moIni){ if(photo){moImg.src=photo;moImg.style.display='';moIni.style.display='none';} else {moImg.removeAttribute('src');moImg.style.display='none';moIni.style.display='';} }
       setT('moInit',c.getAttribute('data-init')||'');
       setT('moName',c.getAttribute('data-name')||'');
       setT('moName2',c.getAttribute('data-name')||'');
