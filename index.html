@@ -705,10 +705,8 @@ a.artist{display:block;color:inherit}
         </div>
       </div>
 
-      <p class="form-alert ok" id="cfDemoMsg" style="display:none">ご応募ありがとうございます。内容を送信しました。担当より折り返しご連絡いたします。</p>
-      <p class="form-alert ok" id="cfErrMsg" style="display:none;background:#fdecec;border-color:#e3b7b7;color:#a23b3b">送信に失敗しました。お手数ですが rose.entertainment.1104@gmail.com まで直接ご連絡ください。</p>
 
-      <form class="contact-form" id="contact-form" name="audition" method="post" action="/" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="rose_website" novalidate hidden>
+      <form class="contact-form" id="contact-form" name="audition" method="post" action="/thanks.html" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="rose_website" hidden>
         <input type="hidden" name="form-name" value="audition">
         <div class="rose-hp" aria-hidden="true"><label>Webサイト（入力しないでください）<input type="text" name="rose_website" tabindex="-1" autocomplete="off"></label></div>
         <div class="field">
@@ -864,28 +862,9 @@ a.artist{display:block;color:inherit}
 
   var cf=document.getElementById('contact-form');
   if(cf){
-    cf.addEventListener('submit',function(e){
-      e.preventDefault();
-      var okMsg=document.getElementById('cfDemoMsg');
-      var errMsg=document.getElementById('cfErrMsg');
-      if(okMsg)okMsg.style.display='none';
-      if(errMsg)errMsg.style.display='none';
-      if(!cf.checkValidity()){ cf.reportValidity(); return; }
+    cf.addEventListener('submit',function(){
       var btn=cf.querySelector('button[type=submit]');
-      var btnText=btn?btn.textContent:'';
       if(btn){btn.disabled=true;btn.textContent='送信中…';}
-      fetch(cf.getAttribute('action')||'/',{method:'POST',body:new FormData(cf)})
-        .then(function(res){
-          if(!res.ok){throw new Error('status '+res.status);}
-          if(okMsg){okMsg.style.display='block';okMsg.scrollIntoView({behavior:'smooth',block:'center'});}
-          cf.reset();
-        })
-        .catch(function(){
-          if(errMsg){errMsg.style.display='block';errMsg.scrollIntoView({behavior:'smooth',block:'center'});}
-        })
-        .finally(function(){
-          if(btn){btn.disabled=false;btn.textContent=btnText;}
-        });
     });
   }
 

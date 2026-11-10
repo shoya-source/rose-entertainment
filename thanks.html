@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ご応募ありがとうございました｜Rosé Entertainment</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Sans+JP:wght@300;400;500;600&family=Shippori+Mincho+B1:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --f-display:"Cormorant",serif;
+    --f-mincho:"Shippori Mincho B1","Shippori Mincho",serif;
+    --f-body:"Noto Sans JP",system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;
+    --paper:#FDFBFA; --ink:#2C2328; --mauve:#8C7680; --rose:#B76E79; --line:rgba(44,35,40,.14);
+    box-sizing:border-box;
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:var(--f-body); color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #fbeef0 0%, transparent 60%),
+      linear-gradient(180deg,#fdf6f4 0%, var(--paper) 55%);
+    display:flex; align-items:center; justify-content:center;
+    padding:48px 22px; text-align:center;
+  }
+  .card{max-width:560px}
+  .eyebrow{font-family:var(--f-display);font-style:italic;font-size:1.3rem;color:var(--rose);letter-spacing:.06em;margin:0 0 .4em}
+  h1{font-family:var(--f-mincho);font-weight:600;font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.5;color:var(--ink);margin:0 0 .8em}
+  p{font-size:.98rem;line-height:2;color:var(--mauve);margin:0 auto 1.6em;max-width:34ch}
+  .btn{
+    display:inline-block;font-family:var(--f-body);font-size:.9rem;letter-spacing:.04em;
+    color:#fff;background:var(--rose);border-radius:999px;padding:14px 34px;text-decoration:none;
+    transition:opacity .2s,transform .2s;
+  }
+  .btn:hover{opacity:.9;transform:translateY(-1px)}
+  .ornament{width:46px;height:1px;background:var(--line);margin:0 auto 30px}
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="ornament"></div>
+    <p class="eyebrow">Thank you</p>
+    <h1>ご応募<br>ありがとうございました</h1>
+    <p>内容を確かに受け付けいたしました。<br>担当者が確認のうえ、ご記入いただいた<br>連絡先へ折り返しご連絡いたします。</p>
+    <a class="btn" href="/">トップページへ戻る</a>
+  </main>
+</body>
+</html>
