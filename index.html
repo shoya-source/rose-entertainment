@@ -906,22 +906,28 @@ a.artist{display:block;color:inherit}
     });
   }
 
-  var roseGoEntry=function(){
+  var roseOpenForm=function(type){
     var form=document.getElementById('contact-form');
     if(!form)return;
     form.hidden=false;
     var cta=document.getElementById('entryCta'); if(cta)cta.style.display='none';
     var sel=document.getElementById('cf-type');
-    if(sel){sel.value='オーディション応募';sel.dispatchEvent(new Event('change',{bubbles:true}));}
+    if(sel){sel.value=type;sel.dispatchEvent(new Event('change',{bubbles:true}));}
     var nv=document.getElementById('nav'), tg=document.getElementById('menuToggle');
     if(nv)nv.classList.remove('open'); if(tg){tg.classList.remove('open');tg.setAttribute('aria-expanded','false');}
     form.scrollIntoView({behavior:'smooth',block:'start'});
   };
   document.addEventListener('click',function(e){
-    var link=e.target.closest?e.target.closest('a[href$="#entry"]'):null;
-    if(link&&document.getElementById('contact-form')){e.preventDefault();roseGoEntry();}
+    var link=e.target.closest?e.target.closest('a'):null;
+    if(!link||!document.getElementById('contact-form'))return;
+    var href=link.getAttribute('href')||'';
+    if(href.indexOf('#entry')>=0){e.preventDefault();roseOpenForm('オーディション応募');}
+    else if(href.indexOf('#contact-form')>=0||href.indexOf('#contact')>=0){e.preventDefault();roseOpenForm('お仕事のご依頼');}
   });
-  if(location.hash==='#entry'&&document.getElementById('contact-form')){window.setTimeout(roseGoEntry,350);}
+  if(document.getElementById('contact-form')){
+    if(location.hash==='#entry'){window.setTimeout(function(){roseOpenForm('オーディション応募');},350);}
+    else if(location.hash==='#contact'||location.hash==='#contact-form'){window.setTimeout(function(){roseOpenForm('お仕事のご依頼');},350);}
+  }
 
   var mcTrack=document.getElementById('modelTrack');
   if(mcTrack){
