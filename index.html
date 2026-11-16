@@ -291,7 +291,7 @@ a.artist{display:block;color:inherit}
 .mc-track::-webkit-scrollbar{display:none}
 .mc-slide{flex:0 0 100%;scroll-snap-align:center;display:flex;justify-content:center;padding:4px clamp(46px,6vw,72px) 8px;color:inherit}
 .mc-card{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(24px,4vw,50px);align-items:center;max-width:740px;width:100%}
-.mc-photo{position:relative;aspect-ratio:3/4;border-radius:3px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:0 30px 60px -44px rgba(120,80,90,.5);background:radial-gradient(70% 55% at 50% 20%,rgba(217,154,163,.4),transparent 60%),linear-gradient(160deg,var(--blush),#fff 82%);display:flex;align-items:center;justify-content:center}
+.mc-photo{position:relative;width:100%;aspect-ratio:3/4;border-radius:3px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:0 30px 60px -44px rgba(120,80,90,.5);background:radial-gradient(70% 55% at 50% 20%,rgba(217,154,163,.4),transparent 60%),linear-gradient(160deg,var(--blush),#fff 82%);display:flex;align-items:center;justify-content:center}
 .mc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .mc-photo .ph-init{font-family:var(--f-display);font-style:italic;font-size:3.4rem;color:rgba(183,110,121,.4)}
 .mc-role{font-family:var(--f-display);font-style:italic;color:var(--rose);font-size:1.05rem;margin:0 0 .3em}
@@ -775,7 +775,6 @@ a.artist{display:block;color:inherit}
     <button class="model-close" id="modelClose" aria-label="閉じる">&times;</button>
     <section class="section model-single">
       <div class="wrap">
-        <p class="mo-demo-note">（プレビュー）タレント詳細ページのイメージ ― 本番では1人ずつ専用URLのページになります</p>
         <figure class="model-promo">
           <div class="mo-slider" id="moSlider" hidden>
             <div class="hero-slides" id="moSlides"></div>
