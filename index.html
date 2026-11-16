@@ -704,8 +704,8 @@ a.artist{display:block;color:inherit}
   <!-- CONTACT (form) -->
   <section class="section contact" id="contact">
     <div class="wrap">
-      <p class="eyebrow">Audition</p>
-      <h2 class="contact-title">オーディション<span class="nobr">参加はこちら</span></h2>
+      <p class="eyebrow" id="cfEyebrow">Audition</p>
+      <h2 class="contact-title" id="cfHeading">オーディション<span class="nobr">参加はこちら</span></h2>
 
       <div id="entryCta">
         <p>所属モデルを募集しています。<br>下記ボタンより、お気軽に<span class="nobr">ご応募ください。</span></p>
@@ -913,6 +913,10 @@ a.artist{display:block;color:inherit}
     var cta=document.getElementById('entryCta'); if(cta)cta.style.display='none';
     var sel=document.getElementById('cf-type');
     if(sel){sel.value=type;sel.dispatchEvent(new Event('change',{bubbles:true}));}
+    var isReq=(type==='お仕事のご依頼'||type==='取材・メディア掲載');
+    var eb=document.getElementById('cfEyebrow'), hd=document.getElementById('cfHeading');
+    if(eb)eb.textContent=isReq?'Contact':'Audition';
+    if(hd)hd.innerHTML=isReq?'ご依頼<span class="nobr">はこちら</span>':'オーディション<span class="nobr">参加はこちら</span>';
     var nv=document.getElementById('nav'), tg=document.getElementById('menuToggle');
     if(nv)nv.classList.remove('open'); if(tg){tg.classList.remove('open');tg.setAttribute('aria-expanded','false');}
     form.scrollIntoView({behavior:'smooth',block:'start'});
