@@ -189,6 +189,11 @@ a{color:inherit;text-decoration:none}
 .hero-slide.s2{background:radial-gradient(70% 55% at 60% 22%,rgba(217,154,163,.42),transparent 60%),linear-gradient(150deg,#f4dfe4,var(--paper) 72%)}
 .hero-slide.s3{background:radial-gradient(70% 55% at 40% 16%,rgba(224,170,160,.42),transparent 60%),linear-gradient(170deg,#f6e3dc,var(--paper-2) 74%)}
 .hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-slide.is-photo{padding:0}
+.hero-slide.s2.is-photo{background:#dbdce9}
+.hero-slide.s3.is-photo{background:#d7e3f1}
+.hero-slide.is-photo .hero-bg{object-fit:cover;object-position:center;filter:blur(30px) saturate(1.04);transform:scale(1.2);z-index:0}
+.hero-slide.is-photo img:not(.hero-bg){object-fit:contain;object-position:center top;z-index:1}
 .hero-slide span{
   position:relative;z-index:2;font-family:var(--f-display);font-style:italic;
   color:rgba(44,35,40,.5);font-size:1.1rem;letter-spacing:.04em;
@@ -618,8 +623,8 @@ a.artist{display:block;color:inherit}
         <div class="hero-slider" id="heroSlider" aria-roledescription="carousel" aria-label="フォトスライダー">
           <div class="hero-slides" id="heroSlides">
             <div class="hero-slide s1"><img id="heroImg1" alt="Rosé Entertainment" style="object-fit:contain;padding:12%"></div>
-            <div class="hero-slide s2"><img id="heroImg2" alt="瀬戸サオリ"></div>
-            <div class="hero-slide s3"><img id="heroImg3" alt="田村 愛美鈴"></div>
+            <div class="hero-slide s2 is-photo"><img class="hero-bg" id="heroBg2" alt="" aria-hidden="true"><img id="heroImg2" alt="瀬戸サオリ"></div>
+            <div class="hero-slide s3 is-photo"><img class="hero-bg" id="heroBg3" alt="" aria-hidden="true"><img id="heroImg3" alt="田村 愛美鈴"></div>
           </div>
           <button type="button" class="hero-nav prev" aria-label="前の写真">&larr;</button>
           <button type="button" class="hero-nav next" aria-label="次の写真">&rarr;</button>
@@ -1130,8 +1135,15 @@ a.artist{display:block;color:inherit}
       setT('moEn',c.getAttribute('data-en')||'');
       buildProfile(c);
       overlay.hidden=false; overlay.scrollTop=0; document.body.style.overflow='hidden';
+      try{ history.pushState({roseModal:true}, ''); }catch(e){}
     };
-    var closeModel=function(){clearMoAuto(); overlay.hidden=true; document.body.style.overflow='';};
+    var moClosing=false;
+    var closeModel=function(fromPop){
+      if(overlay.hidden) return;
+      clearMoAuto(); overlay.hidden=true; document.body.style.overflow='';
+      if(!fromPop){ try{ if(history.state&&history.state.roseModal){ moClosing=true; history.back(); } }catch(e){} }
+    };
+    window.addEventListener('popstate',function(){ if(!overlay.hidden){ closeModel(true); } moClosing=false; });
     mCards.forEach(function(c){c.addEventListener('click',function(e){e.preventDefault();openModel(c);});});
     var mc=document.getElementById('modelClose'); if(mc)mc.addEventListener('click',closeModel);
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!overlay.hidden)closeModel();});
@@ -1145,6 +1157,8 @@ a.artist{display:block;color:inherit}
       setHero('heroImg1', document.querySelector('.hero-logo img'));
       setHero('heroImg2', document.querySelector('[data-name="瀬戸サオリ"] img'));
       setHero('heroImg3', document.querySelector('[data-name="田村 愛美鈴"] img'));
+      setHero('heroBg2', document.querySelector('[data-name="瀬戸サオリ"] img'));
+      setHero('heroBg3', document.querySelector('[data-name="田村 愛美鈴"] img'));
     })();
     var nSlides=st.children.length;
     var dw=document.getElementById('heroDots');
