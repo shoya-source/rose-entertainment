@@ -1166,7 +1166,7 @@ a.artist{display:block;color:inherit}
     var ds=dw.children;
     function goS(idx){cur=(idx+nSlides)%nSlides;st.style.transform='translateX('+(-cur*100)+'%)';for(var d=0;d<nSlides;d++)ds[d].classList.toggle('is-active',d===cur);}
     function nx(){goS(cur+1);} function pv(){goS(cur-1);}
-    function sa(){if(!rm&&nSlides>1){at=window.setInterval(nx,4500);}}
+    function sa(){if(!rm&&nSlides>1){at=window.setInterval(nx,5000);}}
     function rst(){window.clearInterval(at);sa();}
     var nb=heroSlider.querySelector('.hero-nav.next'), pb=heroSlider.querySelector('.hero-nav.prev');
     if(nb)nb.addEventListener('click',function(){nx();rst();});
