@@ -456,6 +456,11 @@ a.artist{display:block;color:inherit}
 .rose-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
 .contact-note{margin-top:1.6em!important;color:var(--mauve);font-size:.9rem}
 .audition-fields{border-top:1px dashed var(--line);margin-top:4px;padding-top:22px}
+.talent-checks{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:6px}
+.talent-chk{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:.95rem;color:var(--ink);cursor:pointer;background:var(--blush-soft);border:1px solid var(--line-soft);border-radius:999px;padding:9px 20px;transition:border-color .2s,background .2s}
+.talent-chk:hover{border-color:var(--rose)}
+.talent-chk:has(input:checked){background:var(--blush);border-color:var(--rose)}
+.talent-chk input{accent-color:var(--rose)}
 .audition-fields .aud-title{font-family:var(--f-display);font-style:italic;color:var(--rose);font-size:1.15rem;margin:0 0 3px}
 .audition-fields .aud-sub{color:var(--mauve);font-size:.82rem;margin:0 0 18px}
 .contact-form input[type=file]{padding:9px 12px;font-size:.86rem;cursor:pointer;background:var(--paper)}
@@ -759,6 +764,23 @@ a.artist{display:block;color:inherit}
           </div>
         </div>
 
+        <div class="audition-fields" id="requestFields">
+          <p class="aud-title">ご依頼情報</p>
+          <p class="aud-sub">お仕事・取材のご依頼は、以下もご記入ください。</p>
+          <div class="field">
+            <label>ご指名のタレント <span>必須</span></label>
+            <div class="talent-checks">
+              <label class="talent-chk"><input type="checkbox" name="rose_talent" value="瀬戸サオリ"> 瀬戸サオリ</label>
+              <label class="talent-chk"><input type="checkbox" name="rose_talent" value="田村愛美鈴"> 田村愛美鈴</label>
+              <label class="talent-chk"><input type="checkbox" name="rose_talent" value="西條愛梨"> 西條愛梨</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-request">依頼内容 <span>必須</span></label>
+            <textarea id="cf-request" name="rose_request" rows="5" placeholder="出演内容・日程・媒体・ご予算など、わかる範囲でご記入ください。"></textarea>
+          </div>
+        </div>
+
         <div class="field">
           <label for="cf-message">メッセージ <span>必須</span></label>
           <textarea id="cf-message" name="rose_message" rows="6" required></textarea>
@@ -853,16 +875,32 @@ a.artist{display:block;color:inherit}
   });
   nav.addEventListener('click',function(e){ if(e.target.tagName==='A'){nav.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded',false);} });
 
-  var ts=document.getElementById('cf-type'), ab=document.getElementById('auditionFields');
+  var ts=document.getElementById('cf-type'), ab=document.getElementById('auditionFields'), rb=document.getElementById('requestFields');
   if(ts&&ab){
     var ai=ab.querySelectorAll('input,select,textarea');
-    var tog=function(){var on=(ts.value==='オーディション応募');ab.style.display=on?'':'none';ai.forEach(function(el){el.disabled=!on;});};
+    var ri=rb?rb.querySelectorAll('input,select,textarea'):[];
+    var tog=function(){
+      var v=ts.value;
+      var isAud=(v==='オーディション応募');
+      var isReq=(v==='お仕事のご依頼'||v==='取材・メディア掲載');
+      ab.style.display=isAud?'':'none';
+      ai.forEach(function(el){el.disabled=!isAud;});
+      if(rb){
+        rb.style.display=isReq?'':'none';
+        ri.forEach(function(el){el.disabled=!isReq;});
+        // 依頼内容のみ必須（タレントは任意でも可にしたい場合はこの行を調整）
+        var req=document.getElementById('cf-request'); if(req)req.required=isReq;
+      }
+    };
     ts.addEventListener('change',tog); tog();
   }
 
   var cf=document.getElementById('contact-form');
   if(cf){
     cf.addEventListener('submit',function(){
+      var t=document.getElementById('cf-type');
+      var k=(t&&t.value==='オーディション応募')?'audition':'contact';
+      cf.setAttribute('action','/thanks.html?k='+k);
       var btn=cf.querySelector('button[type=submit]');
       if(btn){btn.disabled=true;btn.textContent='送信中…';}
     });

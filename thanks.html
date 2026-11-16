@@ -43,9 +43,20 @@
   <main class="card">
     <div class="ornament"></div>
     <p class="eyebrow">Thank you</p>
-    <h1>ご応募<br>ありがとうございました</h1>
-    <p>内容を確かに受け付けいたしました。<br>担当者が確認のうえ、ご記入いただいた<br>連絡先へ折り返しご連絡いたします。</p>
+    <h1 id="thxTitle">ご応募<br>ありがとうございました</h1>
+    <p id="thxBody">内容を確かに受け付けいたしました。<br>担当者が確認のうえ、ご記入いただいた<br>連絡先へ折り返しご連絡いたします。</p>
     <a class="btn" href="/">トップページへ戻る</a>
   </main>
+<script>
+(function(){
+  var k=new URLSearchParams(location.search).get('k');
+  if(k==='contact'){
+    var t=document.getElementById('thxTitle');
+    var b=document.getElementById('thxBody');
+    if(t)t.innerHTML='お問い合わせ<br>ありがとうございました';
+    if(b)b.innerHTML='内容を確かに受け付けいたしました。<br>担当者が確認のうえ、ご記入いただいた<br>連絡先へ折り返しご連絡いたします。';
+  }
+})();
+</script>
 </body>
 </html>
